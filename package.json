@@ -1,0 +1,19 @@
+{
+  "name": "@belbi/rut-cl",
+  "version": "1.0.0",
+  "description": "Operaciones Comunes para RUT Chileno",
+  "main": "index.js",
+  "scripts": {
+    "publicar": "tsc -d && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoMajluf/rut-cl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoMajluf/rut-cl/issues"
+  },
+  "homepage": "https://github.com/DiegoMajluf/rut-cl#readme"
+}
