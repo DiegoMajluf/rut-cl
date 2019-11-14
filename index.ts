@@ -64,3 +64,10 @@ export function getDV(cuerpo: number | string) {
 export function extraeCuerpo(rut: string): string {
     return formatRut(rut).split('-')[0]
 }
+
+export function getRUT(rut: string): { cuerpo: string, dv: string } {
+    let r = formatRut(rut)
+        .split('-')
+
+    return { cuerpo: r[0], dv: r[1] }
+}
