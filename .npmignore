@@ -1,5 +1,7 @@
 index.ts
 index.map
+test.ts
+test.map
+test.js
 tsconfig.json
-package-lock.json
 .gitignore

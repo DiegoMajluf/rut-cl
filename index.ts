@@ -1,14 +1,17 @@
 /**
  * 
- * @param rut formato es sin puntos con guión y dígito verificador
+ * @param rut Puede tener cualquier formato
  */
 export function isValidRut(rut: string): boolean {
+    if (rut == null) return false
     let limpio = rut.toUpperCase()
         .replace(/[^0-9K]/g, '')
 
     let [num, dv] = [limpio.slice(0, -1), limpio.slice(-1)]
 
-    return getDV(+num) == dv.toUpperCase()
+    if(num.indexOf('K') != -1) return false
+
+    return getDV(num) == dv.toUpperCase()
 
 }
 
@@ -17,11 +20,11 @@ export function isValidRut(rut: string): boolean {
  * @param usaPunto: Entrega el formato de rut con puntos separador de miles
  */
 export function formatRut(rut: string, usaPunto: boolean = false) {
+    if(!isValidRut(rut)) throw new Error('El rut no es válido')
     let limpio = rut.toUpperCase()
         .replace(/[^0-9K]/g, '')
 
     let [num, dv] = [limpio.slice(0, -1), limpio.slice(-1)]
-    if (getDV(+num) != dv) throw 'El rut es incorrecto'
     //if (usaPunto) num = (+num).toLocaleString("cl-CL")
     if (usaPunto)
         num = num.split('')
@@ -41,7 +44,7 @@ export function formatRut(rut: string, usaPunto: boolean = false) {
  * */
 export function getDV(cuerpo: number | string) {
     cuerpo = +cuerpo
-    if (isNaN(cuerpo)) throw 'El parámetro sólo debe contener carcatéres numéricos'
+    if (isNaN(cuerpo)) throw new Error('El parámetro sólo debe contener carcatéres numéricos')
     let ser = [2, 3, 4, 5, 6, 7]
 
     let sum = cuerpo.toString()
