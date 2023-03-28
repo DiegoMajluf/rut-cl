@@ -24,7 +24,7 @@ export function formatRut(rut: string, usaPunto: boolean = false) {
     let limpio = rut.toUpperCase()
         .replace(/[^0-9K]/g, '')
 
-    let [num, dv] = [limpio.slice(0, -1), limpio.slice(-1)]
+    let [num, dv] = [limpio.slice(0, -1).replace(/^0*/, ''), limpio.slice(-1)]
     //if (usaPunto) num = (+num).toLocaleString("cl-CL")
     if (usaPunto)
         num = num.split('')
@@ -65,12 +65,11 @@ export function getDV(cuerpo: number | string) {
  * @param rut El rut puede o no incluir guion y puntos
  */
 export function extraeCuerpo(rut: string): string {
-    return formatRut(rut).split('-')[0]
+    return getRUT(rut).cuerpo
 }
 
 export function getRUT(rut: string): { cuerpo: string, dv: string } {
-    let r = formatRut(rut)
-        .split('-')
+    let [cuerpo, dv] = formatRut(rut).split('-')
 
-    return { cuerpo: r[0], dv: r[1] }
+    return { cuerpo, dv }
 }

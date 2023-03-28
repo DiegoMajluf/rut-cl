@@ -1,6 +1,6 @@
 {
   "name": "@belbi/rut-cl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Operaciones Comunes para RUT Chileno",
   "main": "index.js",
   "scripts": {

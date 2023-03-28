@@ -1,4 +1,4 @@
-import { isValidRut } from ".";
+import { formatRut, isValidRut } from ".";
 
 
 let rut = '13924125-8'
@@ -23,3 +23,9 @@ console.log(rut, isValidRut(rut) == false)
 
 rut = '76562214K'
 console.log(rut, isValidRut(rut) == true)
+
+rut = '000076562214K'
+console.log(rut, isValidRut(rut) == true)
+
+console.log(formatRut(rut), formatRut(rut) == '76562214-K')
+console.log(formatRut(rut, true), formatRut(rut, true) == '76.562.214-K')
